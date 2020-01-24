@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/MrBachChoi/liri.github.io#readme",
   "dependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0"
   }
 }
