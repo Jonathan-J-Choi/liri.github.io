@@ -11,3 +11,4 @@ axios
     console.log(res.data);
   });
 
+  // liri.js <operator> <query>
