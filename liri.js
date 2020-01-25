@@ -44,11 +44,17 @@ function movieThis(userQuery) {
 }
 
 //  Bands in town
-axios
-  .get("https://rest.bandsintown.com/artists/" + query + "/events?app_id=codingbootcamp")
-  .then(function(res) {
-    console.log(res.data);
-  });
+function concertThis(userQuery) {
+  axios.get("https://rest.bandsintown.com/artists/" +userQuery+ "/events?app_id=codingbootcamp").then(res => {
+    for (i = 0; i <res.data.length; i++) {
+      let show = res.data[i];
+      let day = show.datetime.split("T");
+
+      let concertResults = "\n---------------------------------\n\n" + "Venue: " + show.venue.name + "\nLocation: " + show.venue.city + "\nDate: " + moment(day[0]).format("MM/DD/YYYY") + "\n\n---------------------------------\n";
+      console.log(concertResults);
+    }
+  })
+}
 
   // liri.js <operator> <query>
 
