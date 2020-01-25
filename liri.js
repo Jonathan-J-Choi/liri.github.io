@@ -1,8 +1,8 @@
 require("dotenv").config();
 const keys = require("./keys");
 const fs = require("fs");
-const spotify = new Spotify(keys.spotify);
-const Spotify = require("node-spotify-api");
+// const Spotify = require("node-spotify-api");
+// const spotify = new Spotify(keys.spotify);
 const moment = require("moment");
 const axios = require("axios");
 
@@ -16,29 +16,32 @@ let choice ={
     !userQuery ? console.log("Who do you want to see perform?") : concertThis(userQuery);
   },
   "spotify-this-song": _ => {
-    !userInput ? spotifyThis("Sanctuary Joji") : spotifyThis(userQuery);
+    !userQuery ? spotifyThis("Sanctuary Joji") : spotifyThis(userQuery);
   },
   "movie-this":_ => {
-    !userInput ? movieThis("Parasite") : movieThis(userQuery);
+    !userQuery ? movieThis("Parasite") : movieThis(userQuery);
   },
   "do-what-it-says": _ =>{
     doThis();
   }
 }
 
-choice[method]();
+choice[query]();
+
 // OMDB
-// axios
-//   .get("https://www.omdbapi.com/?t=" +query+ "&apikey=trilogy")
-//   .then(function(res) {
-//     console.log(res.data.Title);
-//     console.log(res.data.Year);
-//     console.log(res.data.Ratings[1]);
-//     console.log(res.data.Country);
-//     console.log(res.data.Language);
-//     console.log(res.data.Plot);
-//     console.log(res.data.Actors);
-//   });
+function movieThis(userQuery) {
+  if (!userQuery) {
+    userQuery = "Parasite";
+  }
+
+  axios.get("https://www.omdbapi.com/?t=" +userQuery+ "&apikey=trilogy").then(res => {
+    let movie = res.data;
+    let movieResults =
+    "\n---------------------------------\n\n" + "Movie Title: " +movie.Title+ "\nRelease Year: " +movie.Year + "\nIMDB Rating: " + movie.imdbRating + "\nRotten Tomatoes Rating: " +movie.Ratings[1].Value + "\nProduced In: " +movie.Country + "\nLanguage: " +movie.Language+ "\nPlot: " +movie.Plot + "\nStarring: " +movie.Actors+ "\n\n---------------------------------\n";
+
+    console.log(movieResults);
+  })
+}
 
 //  Bands in town
 axios
