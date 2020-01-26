@@ -89,13 +89,13 @@ function spotifyThis(userQuery) {
   },(err, res) => {
     // In case of error
     if(err) throw err;
-    console.log(res)
+    // console.log(res)
 
     let song = res.tracks.items[0];
 
     let spotifyResults = 
     // Showing the results in a clean display
-    "\n---------------------------------\n\n" + "Artist: " +song.artists[0].name + "\nSong  Title: " + song.name + "\nPreview: " + song.preview_url + "\nAlbum: " + song.album.name + "\n\n---------------------------------\n";
+    "\n---------------------------------\n\n" + "Artist: " +song.artists[0].name + "\nSong Title: " + song.name + "\nPreview: " + song.preview_url + "\nAlbum: " + song.album.name + "\n\n---------------------------------\n";
 
     console.log(spotifyResults);
   })
