@@ -12,4 +12,4 @@ Dependencies: Axios, Dotenv, Node-Spotify-API, Moment
 
 ## Demo
 
-![Liri Demo](assets/demo.gif)
+![](assets/demo.gif)
