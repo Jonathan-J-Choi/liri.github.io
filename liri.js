@@ -32,7 +32,7 @@ choice[query]();
 
 // OMDB
 function movieThis(userQuery) {
-  // The default movie when the user does not choose one
+  // The default movie if the user does not choose one
   if (!userQuery) {
     userQuery = "Parasite";
   }
@@ -78,7 +78,7 @@ function concertThis(userQuery) {
 
 // Spotify
 function spotifyThis(userQuery) {
-  // The default movie when the user does not choose one
+  // The default movie if the user does not choose one
   if(!userQuery) {
     userQuery = "Sanctuary Joji";
   }
